@@ -23,7 +23,6 @@ class Header extends Component {
     return (
        <div className="container">
         <h1>{this.props.corporation}</h1>
-        <h2>Empleados: {this.state.numEmpl} </h2>
         </div> 
     );
   }
