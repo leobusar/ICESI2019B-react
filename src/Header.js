@@ -13,7 +13,7 @@ class Header extends Component {
       }
    }
 
-   componentWillMount(){
+   UNSAFE_componentWillMount(){
        this.setState({
            numEmpl: 10
        })

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 import Header from './Header'
 import UserList from './components/UserList';
+import UserForm from './components/UserForm';
 
 
 class App extends Component {
@@ -18,6 +19,16 @@ class App extends Component {
     }
   }
 
+  addUser(user){
+    let users = this.state.users; 
+    users.push(user);
+    console.log(users);
+    this.setState({
+      users: users
+    })
+  
+  }
+
   render() {
 
     var  empresa="NaN"
@@ -26,6 +37,7 @@ class App extends Component {
       <div className="container">
           <Header corporation={empresa}></Header>
           <UserList users={this.state.users} />
+          <UserForm onAdd={this.addUser.bind(this)} />
       </div>
     );
   }
