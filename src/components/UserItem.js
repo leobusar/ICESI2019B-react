@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 
+
+
 class UserItem extends Component {
+
+    handleEdit(){
+      //console.log(this.props.user)
+      this.props.onEdit(this.props.user)
+    }
+
     render() {
         let user = this.props.user
         return (
@@ -8,6 +16,10 @@ class UserItem extends Component {
             <td>{user.id}</td>
             <td>{user.email}</td>
             <td>{user.area}</td>
+            <td>
+            <button className="btn btn-primary mx-3" onClick={this.handleEdit.bind(this)} >Editar</button>
+            <button className="btn btn-danger">Eliminar </button>
+            </td>
           </tr>            
         );
       }

@@ -1,35 +1,70 @@
 import React, { Component } from 'react';
 
 class UserForm extends Component {
+    
+    constructor(props) {
+        super(props);
+        this.state = {
+            id: "", email: "", area: ""
+        };
+        
+      }
+    
+    static getDerivedStateFromProps(nextProps, state) {
+        if (nextProps.useredit.id !== state.id){ 
+            return {
+                id: nextProps.useredit.id,
+                email: nextProps.useredit.email, 
+                area: nextProps.useredit.area
+            }
+        }
+        return null
+    }
+
+    //UNSAFE_componentWillReceiveProps(){
+        // this.setState({
+        //     id: this.props.useredit.id,
+        //     email: this.props.useredit.email, 
+        //     area: this.props.useredit.area
+        // })
+    //}
+
+    handleChange(event) {
+        console.log(event.target.value)
+        this.setState({ [event.target.name]: event.target.value});
+    }      
+
     handleSubmit(e){
         e.preventDefault();
         //console.log(this.refs);
-        let user = {
-            id: this.refs.id.value,
-            email: this.refs.email.value,
-            area: this.refs.area.value
-        }
-        this.refs.id.value = ""
-        this.refs.email.value = ""
-        this.refs.area.value =""        
-        this.props.onAdd(user)
-        //console.log(user)
+        // let user = {
+        //     id: this.refs.id.value,
+        //     email: this.refs.email.value,
+        //     area: this.refs.area.value
+        // }
+        // this.refs.id.value = ""
+        // this.refs.email.value = ""
+        // this.refs.area.value =""        
+        // this.props.onAdd(user)
+        // //console.log(user)
     }
 
     render() {
+
+
         return (
         <form onSubmit={this.handleSubmit.bind(this)}>
         <div className="form-group">
             <label forhtml="id">Identification Number</label>
-            <input type="number" ref="id" className="form-control" id="id" placeholder="Enter Identification" />
+            <input type="number" name="id" value={this.state.id} className="form-control" id="id" onChange={this.handleChange.bind(this)}/>
         </div>
         <div className="form-group">
             <label forhtml="email">Email address</label>
-            <input type="email" ref="email" className="form-control" id="email" placeholder="Enter email" />
+            <input type="email" name="email" className="form-control" value={this.state.email} id="email" placeholder="Enter email" onChange={this.handleChange.bind(this)}/>
         </div>
         <div className="form-group">
             <label forhtml="area">Area</label>
-            <input type="text" ref="area" className="form-control" id="area" placeholder="Enter Area" />
+            <input type="text" name="area" className="form-control" value={this.state.area} onChange={this.handleChange.bind(this)}/>
         </div>
         
         <button type="submit" className="btn btn-primary">Submit</button>

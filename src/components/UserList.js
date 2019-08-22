@@ -3,13 +3,18 @@ import UserItem from "./UserItem";
 
 class UserList extends Component {
 
-    UNSAFE_componentWillMount(){
+    componentDidMount(){
       //  console.log(this.props.users);
+    }
+
+    onEditHandle(user){
+        //console.log(user)
+        this.props.onEdit(user)
     }
 
     render() {
         let listaUsuarios= this.props.users.map( usuario =>
-            <UserItem key={usuario.id} user={usuario} /> )
+            <UserItem key={usuario.id} user={usuario}  onEdit={this.onEditHandle.bind(this)}/> )
 
         return (
             <table className="table">
@@ -18,6 +23,7 @@ class UserList extends Component {
                     <th scope="col">Id</th>
                     <th scope="col">email</th>
                     <th scope="col">Area</th>
+                    <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
