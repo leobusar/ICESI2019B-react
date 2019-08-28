@@ -5,10 +5,6 @@ import Users from './components/User/Users';
 
 class App extends Component {
 
-  constructor(){
-    super();
-  }
-  
   render() {
 
     var  empresa="NaN"

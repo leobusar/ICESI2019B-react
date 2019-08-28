@@ -5,7 +5,7 @@ import UserForm from './UserForm';
 import firebase from '../../config/firebase'; 
 
 class Users extends Component {
-1
+
     constructor(){
       super();
       this.state = {

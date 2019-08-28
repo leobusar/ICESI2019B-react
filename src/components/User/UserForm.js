@@ -5,9 +5,8 @@ class UserForm extends Component {
     constructor() {
         super();
         this.state = {
-            id: "", email: props.algo, area: ""
+            id: "", email: "", area: ""
         };
-        
       }
     
     static getDerivedStateFromProps(nextProps, state) {
