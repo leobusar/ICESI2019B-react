@@ -8,6 +8,10 @@ class UserItem extends Component {
       //console.log(this.props.user)
       this.props.onEdit(this.props.user)
     }
+    handleDel(){
+      //console.log(this.props.user)
+      this.props.onDelete(this.props.user)
+    }
 
     render() {
         let user = this.props.user
@@ -18,7 +22,7 @@ class UserItem extends Component {
             <td>{user.area}</td>
             <td>
             <button className="btn btn-primary mx-3" onClick={this.handleEdit.bind(this)} >Editar</button>
-            <button className="btn btn-danger">Eliminar </button>
+            <button className="btn btn-danger" onClick={this.handleDel.bind(this)} >Eliminar </button>
             </td>
           </tr>            
         );

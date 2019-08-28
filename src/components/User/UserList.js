@@ -12,9 +12,14 @@ class UserList extends Component {
         this.props.onEdit(user)
     }
 
+    onDeleteHandle(user){
+        //console.log(user)
+        this.props.onDelete(user)
+    }
+
     render() {
         let listaUsuarios= this.props.users.map( usuario =>
-            <UserItem key={usuario.id} user={usuario}  onEdit={this.onEditHandle.bind(this)}/> )
+            <UserItem key={usuario.id} user={usuario}  onEdit={this.onEditHandle.bind(this)}  onDelete={this.onDeleteHandle.bind(this)} /> )
 
         return (
             <table className="table">

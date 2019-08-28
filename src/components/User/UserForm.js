@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 
 class UserForm extends Component {
     
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
-            id: "", email: "", area: ""
+            id: "", email: props.algo, area: ""
         };
         
       }
@@ -30,23 +30,22 @@ class UserForm extends Component {
     //}
 
     handleChange(event) {
-        console.log(event.target.value)
+        // console.log(event.target.value)
         this.setState({ [event.target.name]: event.target.value});
     }      
 
     handleSubmit(e){
         e.preventDefault();
         //console.log(this.refs);
-        // let user = {
-        //     id: this.refs.id.value,
-        //     email: this.refs.email.value,
-        //     area: this.refs.area.value
-        // }
-        // this.refs.id.value = ""
-        // this.refs.email.value = ""
-        // this.refs.area.value =""        
-        // this.props.onAdd(user)
+        let user = {
+            id: this.state.id,
+            email: this.state.email,
+            area: this.state.area
+        }
+    
+        this.props.onAdd(user)
         // //console.log(user)
+
     }
 
     render() {
@@ -56,7 +55,7 @@ class UserForm extends Component {
         <form onSubmit={this.handleSubmit.bind(this)}>
         <div className="form-group">
             <label forhtml="id">Identification Number</label>
-            <input type="number" name="id" value={this.state.id} className="form-control" id="id" onChange={this.handleChange.bind(this)}/>
+            <input type="text" disabled name="id" value={this.state.id} className="form-control" id="id" onChange={this.handleChange.bind(this)}/>
         </div>
         <div className="form-group">
             <label forhtml="email">Email address</label>
